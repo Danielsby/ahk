@@ -218,3 +218,15 @@ Capslock & k::Send +{down}
 Return 
 #IfWinActive
 
+#MaxHotkeysPerInterval 10000
+
+#IfWinActive ahk_class Chrome_WidgetWin_1
+ ~$WheelDown:: 
+ ~$WheelUp:: 
+    MouseGetPos,, yaxis 
+    IfGreater,yaxis,70, Return 
+    IfEqual,A_ThisHotkey,~$WheelDown, Send ^{PgDn} 
+                                 Else Send ^{PgUp} 
+Return 
+#IfWinActive
+
